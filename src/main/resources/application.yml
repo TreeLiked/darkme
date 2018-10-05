@@ -1,0 +1,35 @@
+server:
+  servlet:
+    context-path: /
+  port: 443
+  ssl:
+    enabled: true
+    key-store: classpath:www.darkme.cn.jks
+    key-store-password: liu666.090797
+    key-store-type: JKS
+
+
+logging:
+  level:
+    org.springframework: info
+
+
+spring:
+  thymeleaf:
+    cache: true
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+
+  datasource:
+      # 使用druid数据源
+      type: com.alibaba.druid.pool.DruidDataSource
+
+
+
+## 该配置节点为独立的节点
+#mybatis:
+#  mapper-locations: classpath:mapping/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+#  type-aliases-package: com.example.darkme.po # 注意：对应实体类的路径
+

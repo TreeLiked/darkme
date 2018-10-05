@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <!--<link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet">-->
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/hello.css}">
+
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.js}"></script>
+    <script type="text/javascript" th:src="@{/js/js.cookie.js}"></script>
+    <script type="text/javascript" th:src="@{/js/up_down.js}"></script>
+    <!--<script type="text/javascript" th:src="@{/js/action.js}"></script>-->
+    <!--<script type="text/javascript" th:src="@{/js/mod_style.js}"></script>-->
+    <script type="text/javascript" th:src="@{/js/jquery.session.js}"></script>
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <!--<script th:src="@{https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js}"></script>-->
+
+    <title>个人文件</title>
+
+
+</head>
+<body style="background-color: transparent">
+<div class="container-fluid" style="padding: 0">
+    <div class="hello-main">
+
+        <div class="panel panel-default " style="background-color:transparent">
+            <!-- Default panel contents -->
+            <div class="panel-heading" style="background-color:transparent">文件列表</div>
+            <div class="panel-body">
+                <p>The file list contains the files you uploaded & (the destination).equals(username). You can download
+                    all but delete only the files you uploaded.</p>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover" style="background-color:transparent"
+                       th:if="${not #lists.isEmpty(mFilelist)}">
+                    <tr>
+                        <th>ID</th>
+                        <th>文件名称</th>
+                        <th>文件大小</th>
+                        <th>提取编号</th>
+                        <th>上传日期</th>
+                        <th>保存日期</th>
+                        <th>文件所属</th>
+                        <th>目的地</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr th:each="file : ${mFilelist}">
+                        <td th:text="${file.id}"></td>
+                        <td th:text="${file.file_name}"></td>
+                        <td th:text="${file.file_size}"></td>
+                        <td th:text="${file.file_bring_id}"></td>
+                        <td th:text="${file.file_post_date}"></td>
+                        <td th:text="${file.file_save_days}"></td>
+                        <td th:text="${file.file_post_author}"></td>
+                        <td th:text="${file.file_destination}"></td>
+                        <td th:text="${file.file_attach}"></td>
+                        <!--"'javascript:editUser(\''+${prod.id}+'\');'">-->
+                        <td>
+                            <a th:onclick="'javascript:rmFile(\'' + ${file.id} +'\', \''+${file.file_bucket_id}+'\', \''+${file.file_name}+ '\', \''+  ${file.file_post_author} + '\')'"
+                               class="btn btn-danger">删除</a> &emsp; <a
+                                th:href="@{'doDownload?bucketId='+${file.file_bucket_id} + '&filename='+${file.file_name} + '&file_save_days='+${file.file_save_days}}"
+                                class="btn btn-info">下载</a></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
