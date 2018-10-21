@@ -11,6 +11,11 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 
 
+/**
+ * 程序入口
+ *
+ * @author lqs2
+ */
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.example.controller", "com.example.config"})
 @PropertySource(value = {"classpath:application.yml", "classpath:jdbc.properties", "classpath:objectStorage.properties"})
@@ -18,16 +23,14 @@ import org.springframework.context.annotation.Scope;
 public class DarkmeApplication {
 
 
-
     /**
      * 内部启动
-     *
+     * <p>
      * -XX:+PrintGCDetails -Xmx32M -Xms1M，默认4G
      * 打印详细GC日志 最大堆内存32m 初始堆内存为1m 预计一致回收 特别频繁
-     *
-     *
+     * <p>
+     * <p>
      * 外部启动<br>
-     *
      */
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(DarkmeApplication.class);
@@ -38,7 +41,7 @@ public class DarkmeApplication {
 
     @Bean
     @Scope(value = "singleton")//默认也是如此
-    public ObjectMapper ObjectMapper(){
+    public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
 
@@ -68,8 +71,6 @@ public class DarkmeApplication {
 //                        .setServerOption(UndertowOptions.HTTP2_SETTINGS_ENABLE_PUSH,true).addHttpListener(80, "0.0.0.0"));
 //        return factory;
 //    }
-
-
 
 //    @Bean
 //    public Connector httpConnector() {

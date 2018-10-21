@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * @Author lqs2
- * @Description TODO
- * @Date 2018/7/19, Thu
+ * 页面控制器
+ *
+ * @author lqs2
  */
 @Slf4j
 @Controller
@@ -45,7 +45,7 @@ public class PageController {
     }
 
     @RequestMapping("hello")
-    public String sayHello(HttpServletResponse response, HttpSession session, Model model) {
+    public String sayHello() {
         return "hello";
     }
 
@@ -94,6 +94,11 @@ public class PageController {
     @RequestMapping("goSource")
     public void goGit(HttpServletResponse response) throws IOException {
         response.sendRedirect("https://github.com/TreeLiked/darkme.git");
+    }
+
+    @RequestMapping("stroke")
+    public String displayOneStroke() {
+        return "onestroke";
     }
 
     @RequestMapping("countAll")

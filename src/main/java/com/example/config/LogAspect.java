@@ -86,19 +86,6 @@ public class LogAspect {
         logger.info("Request URL: {}", requestUrl);
         logger.info("Request METHOD: {}", requestMethod);
 
-//        Map<String, String[]> parameterMap =
-//                request.getParameterMap();
-//        Enumeration<String> enu = request.getParameterNames();
-//        int i = 1;
-//        while (enu.hasMoreElements()) {
-//            String name = enu.nextElement();
-//            String value = request.getParameter(name);
-//            if (value.length() <= 100) {
-//                logger.info("Param[{}]: name= {}, value= {}", i++, name, value);
-//            } else {
-//                logger.info("Param[{}]: name= {}, value= {}", i++, name, value.substring(0, 97));
-//            }
-//        }
         String response = "";
         if (resp instanceof String) {
             String value = (String) resp;

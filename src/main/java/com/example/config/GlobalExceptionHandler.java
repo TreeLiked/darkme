@@ -5,27 +5,26 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 /**
- * @Author lqs2
- * @Description TODO
- * @Date 2018/8/3, Fri
+ * @author lqs2
+ * @description 全局异常处理
+ * @date 2018/8/3, Fri
  */
 @SuppressWarnings("SpringFacetCodeInspection")
 @Configuration
 @ControllerAdvice(basePackages = {"com.example.controller", "com.example.utils"})
 public class GlobalExceptionHandler {
 
-    //    @ExceptionHandler(Exception.class)
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Map<String, Object> catchError() {
+    public String errorHandle(HttpServletRequest request, Exception e) {
 //        实际开发写入日志
-        Map<String, Object> errorResultMap = new HashMap<>();
-        errorResultMap.put("error_code", "500");
-        errorResultMap.put("error_msg", "系统错误");
-        return errorResultMap;
+//        String remoteIp = request.getRemoteAddr();
+//        String requestUrl = request.getRequestURL().toString();
+//        String requestMethod = request.getMethod();
+//        request.getRequestURI();
+        return "error";
     }
 }

@@ -82,7 +82,6 @@ public class MemoController {
                 return i == 1? "1": "0";
             } catch (Exception e) {
                 log.error(e.toString());
-
             }
         }
         return "0";
@@ -100,7 +99,6 @@ public class MemoController {
                 return objectMapper.writeValueAsString(list);
             } catch (Exception e) {
                 log.error(e.toString());
-
             }
         }
         return "0";
